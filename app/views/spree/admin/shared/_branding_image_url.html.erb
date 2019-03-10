@@ -1,0 +1,7 @@
+<div data-hook="admin_product_form_name">
+  <%= f.field_container :nabranding_image_urlme, class: ['form-group'] do %>
+    <%= f.label :branding_image_url, raw(Spree.t(:branding_image_url) + content_tag(:span, ' *', class: 'required')) %>
+    <%= f.text_field :branding_image_url, class: 'form-control title' %>
+    <%= f.error_message_on :branding_image_url %>
+  <% end %>
+</div>

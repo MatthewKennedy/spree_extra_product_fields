@@ -1,0 +1,50 @@
+<div data-hook="admin_product_form_description">
+  <%= f.field_container :product_javascripts, class: ['form-group'] do %>
+    <%= f.label :product_javascripts, Spree.t(:product_javascripts) %>
+    <%= f.text_area :product_javascripts, { rows: "5", class: 'form-control' } %>
+    <%= f.error_message_on :product_javascripts %>
+  <% end %>
+</div>
+
+<script>
+
+      function ProductScript() {
+
+        this.init = function() {
+          this.initializeEditor();
+        }
+
+        this.initializeEditor = function() {
+          var scriptCodeMirror = CodeMirror.fromTextArea(document.getElementById("product_product_javascripts"), {
+            autoCloseTags: true,
+
+            matchTags: {
+              bothTags: true
+            },
+
+            extraKeys: {
+              "Ctrl-J": "toMatchingTag",
+              "Ctrl-Enter": function(cm) {
+              cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+              },
+              "Esc": function(cm) {
+              if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+              }
+            },
+
+            mode: {
+              name: "javascript",
+              globalVars: true
+            }
+
+          });
+
+          scriptCodeMirror.setSize($('.admin-editor-section').height(), 200);
+        }
+      }
+
+      window.onload = function() {
+            new ProductScript().init();
+            new ProductDesc().init();
+          };
+</script>
